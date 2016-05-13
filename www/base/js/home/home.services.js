@@ -1,7 +1,8 @@
+/* 
+ * base/js/home/home.services.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Services */
-
 /**
  * Service for the home screen
  */
@@ -35,3 +36,4 @@ synthMobile.factory('HomeService',
 		return new HomeService();
 	}
 ]);
+})(synthMobile);

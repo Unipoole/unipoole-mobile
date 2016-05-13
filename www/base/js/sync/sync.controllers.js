@@ -1,8 +1,8 @@
+/* 
+ * base/js/sync/sync.controllers.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Controllers */
-
-
 /**
  * Session object used for logins
  */
@@ -275,3 +275,4 @@ synthMobile.factory("SyncSelection",
 		
 	}]
 );
+})(synthMobile);

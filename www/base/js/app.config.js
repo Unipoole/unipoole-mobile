@@ -1,3 +1,7 @@
+/* 
+ * base/js/app.config.js
+ */
+(function(synthMobile){
 'use strict';
 synthMobile.factory("SynthConfig",[function(){
 	return {
@@ -71,3 +75,4 @@ synthMobile.factory("SynthConfig",[function(){
 		}
 	};
 }]);
+})(synthMobile);

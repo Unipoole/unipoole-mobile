@@ -1,6 +1,8 @@
+/* 
+ * base/js/home/register.services.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Services */
 
 /**
  * Service that will handle registrations of modules.
@@ -150,3 +152,4 @@ synthMobile.factory('RegisterService',
 	
 		return new RegisterService();
 }]);
+})(synthMobile);

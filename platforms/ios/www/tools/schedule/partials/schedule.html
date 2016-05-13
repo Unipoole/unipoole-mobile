@@ -1,5 +1,5 @@
 <div ng-controller="ScheduleCtrl">
-	<form class="form-horizontal" role="form" novalidate>
+	<form class="form-horizontal shedule-filter" role="form" novalidate>
 	
 		<!-- Dropdown to select filter option -->
 		<div class="form-group">
@@ -109,10 +109,17 @@
 	</form>
 	</div>
 	<hr>
-	<div class="panel panel-primary schedule-event" ng-repeat="event in schedule | object2Array | orderBy:orderDateFunc">
-            <div class="panel-heading">{{event.start | formatDate:'YYYY MMM DD @ HH:mm'}}</div>
-            <div class="panel-body">{{event.title}}</div>
-            <div class="panel-body" ng-bind-html="event.description | noEscape"></div>
-        </div>
+	<div class="alert alert-warning synth-busybox" ng-show="loadingSchedule" style="margin-top: -20px">
+			<span class="synth-icon-loader32"></span>
+			<span>Loading schedule...</span>
+	</div>
+	<div class="alert alert-warning synth-busybox" ng-show="!loadingSchedule && schedule.length === 0" style="margin-top: -20px">
+			<span>There are no events for your criteria</span>
+	</div>
+	<div class="panel panel-primary schedule-event" ng-repeat="event in schedule | orderBy:orderDateFunc" ng-hide="loadingSchedule">
+         <div class="panel-heading">{{event.start | formatDate:'YYYY MMM DD @ HH:mm'}}</div>
+         <div class="panel-body">{{event.title}}</div>
+         <div class="panel-body" ng-bind-html="event.description | noEscape"></div>
+     </div>
 	
 </div>

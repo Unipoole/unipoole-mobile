@@ -1,6 +1,8 @@
+/* 
+ * base/js/settings/settings.controllers.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Controllers */
 
 /**
  * Controller for the home screen
@@ -127,4 +129,4 @@ synthMobile.controller('SettingsCtrl',
 		.then(funcBuildModulesList);
 	}
  ]);
-
+})(synthMobile);

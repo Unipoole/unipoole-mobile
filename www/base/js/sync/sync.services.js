@@ -1,3 +1,7 @@
+/* 
+ * base/js/sync/sync.services.js
+ */
+(function(synthMobile){
 'use strict';
 
 /* Services */
@@ -192,3 +196,4 @@ synthMobile.factory('SyncService',
 
 	return new SyncService();
 }]);
+})(synthMobile);

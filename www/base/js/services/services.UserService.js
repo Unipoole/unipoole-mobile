@@ -1,3 +1,7 @@
+/* 
+ * base/js/services/services.UserService.js
+ */
+(function(synthMobile){
 'use strict';
 
 /**
@@ -48,3 +52,4 @@ synthMobile.factory('UserService',
     
     return new UserService();
 }]);
+})(synthMobile);

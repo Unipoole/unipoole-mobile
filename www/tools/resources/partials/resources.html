@@ -1,33 +1,28 @@
 <div ng-controller="ResourcesCtrl">
-	<ul class="list-group list-menu" ng-hide="showResourceInfo">
-		<li class="list-group-item" ng-click="goUp()">
+	<div class="list-group list-menu" ng-hide="showResourceInfo" ng-swipe-left="previousPage()" ng-swipe-right="nextPage()">
+		<div class="list-group-item" ng-click="goUp()">
 			<span class="glyphicon glyphicon-folder-open"> </span> <b>..</b>
-		</li>
-		<li class="list-group-item" ng-repeat="resource in resources" ng-click="openResource(resource, $event)" ng-if="!loadingResources">
-			<span class="badge" ng-if="!resource.directory">{{resource.size | bytesToSize}}</span>
-			
-			
-			<div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-				<span class="glyphicon glyphicon-folder-close" ng-if="resource.directory"> </span>
-				<span class="glyphicon glyphicon-file" ng-if="!resource.directory"> </span>
-				{{resource.name}}
-			</div>
-			<div ng-if="!resource.directory">
-				<button type="button" class="btn btn-danger btn-xs" ng-if="!resource.isDownloaded" ng-click="downloadResource(resource, $event)"><span class="glyphicon glyphicon-cloud-download"></span> Download</button>
-				<button type="button" class="btn btn-primary btn-xs" ng-if="resource.isDownloaded">Open</button>
-				<button type="button" class="btn btn-default btn-xs" ng-click="showInfo(resource, $event)"><span class="glyphicon glyphicon-info-sign"></span> Info</button>
-			</div>
-			<div style="margin-top: 7px" ng-if="resource.busyDownloading">
-				<div class="progress progress-striped active" style="margin-bottom: 0;">
-					<div class="progress-bar progress-bar-success" role="progressbar" style="width: {{resource.downloadProgress || 0}}%">
-					</div>
-				</div>
-			</div>
-		</li>
-	</ul>
-	<div class="alert alert-warning synth-busybox" ng-show="loadingResources" style="margin-top: -20px">
+		</div>
+		<div class="list-group-item" resource-list-item resource="resource" ng-repeat="resource in resources" ng-click="openResource(resource, $event)" ng-if="!loadingResources">
+		</div>
+	</div>
+	<div class="alert alert-warning synth-busybox" ng-if="loadingResources" style="margin-top: -20px">
 		<span class="synth-icon-loader32"></span>
 		<span>Loading Resources...</span>
+	</div>
+	<div ng-if="!loadingResources && pageListAllCount > pageListPageCount" style="text-align: center">
+		<pagination total-items="pageListAllCount"
+			style="margin: 0;"
+			items-per-page="pageListPageCount" 
+			max-size="paginationSize" 
+			ng-model="pageCurrent" 
+			ng-change="paginationUpdate(pageCurrent)"
+			next-text="&#62;"
+			previous-text="&#60;"
+			first-text="&#171;"
+			last-text="&#187;"
+			boundary-links="true" 
+			rotate="true"></pagination>
 	</div>
 	
 	

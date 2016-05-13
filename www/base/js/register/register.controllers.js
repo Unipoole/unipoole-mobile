@@ -1,8 +1,8 @@
+/* 
+ * base/js/register/register.controllers.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Controllers */
-
-
 /**
  * Controller to allow the user to authenticate
  */
@@ -298,4 +298,5 @@ synthMobile.controller('RegisterCtrl',
 			.then(funcGoToSync, funcHandleError);
 	}]
 );
+})(synthMobile);
 

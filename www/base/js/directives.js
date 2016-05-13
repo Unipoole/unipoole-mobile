@@ -1,3 +1,8 @@
+/* 
+ * base/js/directives.js
+ */
+(function(synthMobile){
+'use strict';
 /**
  * Directive to create the menu of the application
  */
@@ -161,3 +166,4 @@ synthMobile.directive('synthMenu',
 		}
 	};
 });
+})(synthMobile);

@@ -4,13 +4,21 @@
  * Controller for displaying the list of Forums
  */
 synthMobile.controller('ResourcesCtrl', 
-	['$scope', '$filter', '$rootScope', '$window', '$timeout', 'ResourcesService', 'DataService', 'SynthErrorHandler',
-	function($scope, $filter, $rootScope, $window, $timeout, ResourcesService, DataService, SynthErrorHandler) {
+	['$scope', '$filter', '$rootScope', '$window', '$timeout', '$filter', 'ResourcesService', 'DataService', 'SynthErrorHandler',
+	function($scope, $filter, $rootScope, $window, $timeout, $filter, ResourcesService, DataService, SynthErrorHandler) {
 
 		$rootScope.activePage="forums";
 		$rootScope.breadcrumbs = [{'name' : 'Resources'}];
 		$scope.showResourceInfo = false;
 		$scope.loadingResources = true;
+
+		
+		$scope.pageCurrent 		= 1;		// Page the user is currently on
+		$scope.pageListAllCount = 0;		// Total number of items that needs to be displayed on pages
+		$scope.pageListPageCount= 10;		// Number of items that may be displayed on a page
+		$scope.paginationSize 	= 5;		// Limit number for pagination size
+		var pageResourcesAll=null;			// All the resources that needs to be split over pages
+		
 		
 		$scope.parentResource = null; // Start off with root
 		var dataDir = null;
@@ -45,12 +53,51 @@ synthMobile.controller('ResourcesCtrl',
 							return 1;
 						}
 					});
-					
+					// TODO this should move to page
 					$scope.loadingResources = false;
-					$scope.resources = resources;
+					pageResourcesAll = $filter("object2Array")(resources);
+					paginationCalculate();
+					$scope.paginationUpdate(1);
 				});
 			}, 500);
 		}
+		
+		/**
+		 * Calculate what can fit onto screen and how paging should work
+		 */
+		function paginationCalculate(){
+			$scope.pageListAllCount=pageResourcesAll.length;
+			
+		}
+		
+		$scope.nextPage = function(){
+			if($scope.pageCurrent > 1){
+				$scope.paginationUpdate($scope.pageCurrent-1);
+			}
+		};
+		
+		$scope.previousPage = function(){
+			var pageSize = $scope.pageListPageCount;
+			var itemCount = $scope.pageListAllCount;
+			var numPages = Math.floor(itemCount/pageSize) + (itemCount%pageSize > 0 ? 1 : 0)
+			console.log($scope.pageCurrent + "<" + numPages);
+			if($scope.pageCurrent < numPages){
+				$scope.paginationUpdate($scope.pageCurrent+1);
+			}
+		}
+		
+		/**
+		 * Update the display for the current page
+		 */
+		$scope.paginationUpdate = function(newPage){
+			$scope.pageCurrent = newPage;
+			var pageSize = $scope.pageListPageCount;
+			var itemCount = $scope.pageListAllCount;
+			var startIdx = (newPage-1)*pageSize;
+			var endIdx = Math.min((newPage*pageSize)-1, itemCount-1);
+			$scope.resources = pageResourcesAll.slice(startIdx, endIdx);
+			$scope.myScroll["mainScroll"].scrollTo(0,0);// Scroll to top to see modal
+		};
 		
 		$scope.showInfo = function(resource, $event){
 			$event.stopPropagation();

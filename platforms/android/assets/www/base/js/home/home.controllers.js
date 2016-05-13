@@ -1,1 +1,0 @@
-"use strict";synthMobile.controller("HomeCtrl",["$scope","$rootScope","$filter","$window","HomeService","LoggerService","SynthErrorHandler",function(e,o,r,t,n,c,i){c("HomeCtrl");o.activePage="home",o.breadcrumbs=[{name:"Home"}],n.getHomeTools().then(function(e){o.tools=e},i)}]);

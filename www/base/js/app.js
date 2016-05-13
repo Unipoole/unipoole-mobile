@@ -1,20 +1,26 @@
+/* 
+ * base/js/app.js
+ */
 'use strict';
 
 /* Main application module */
 var synthMobile = angular.module('SynthMobile', [
 	'ngRoute',
 	'ngAnimate',
+	'ngTouch',
 	'ab-base64',
 	'ui.bootstrap',
 	'frapontillo.bootstrap-switch',
 	'ng-iscroll'
-])
+]);
 
+(function(synthMobile){
+'use strict';
 /**
  * Configure routes for base application
  * Do not configure tool specific routes here!
  */
-.config(
+synthMobile.config(
   ['$routeProvider','$compileProvider',
   function($routeProvider, $compileProvider) {
 	  
@@ -589,8 +595,12 @@ var synthMobile = angular.module('SynthMobile', [
 
 	// Set default options for some scrollers
 	$scope.myScrollOptions = $scope.myScrollOptions || {};
-	$scope.myScrollOptions["menuScroll"] = { // TODO move to the menu directive
+	$scope.myScrollOptions["menuScroll"] = {
 		scrollbars: true
+	};
+	$scope.myScrollOptions["mainScroll"] = {
+		scrollbars: true,
+		scrollX : true
 	};
 	
 	/**
@@ -624,6 +634,7 @@ var synthMobile = angular.module('SynthMobile', [
 	}, false);
 }]);
 
+})(synthMobile);
 
 /**
  * An object that manages handlers that have tool specific handlers to manage

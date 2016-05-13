@@ -67,6 +67,16 @@ synthMobile.config(['$routeProvider',
 			}
 		}
 	};
+}])
+.directive("resourceListItem", [function(){
+	return {
+		'restrict' : 'A',
+		'templateUrl' : 'tools/resources/partials/resourceListItem.html',
+		/*'replace' : true,*/
+		'link': function (scope, element, attr){
+
+		}
+	};
 }]);
 
 /**

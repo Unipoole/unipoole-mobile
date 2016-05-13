@@ -1,6 +1,8 @@
+/* 
+ * base/js/services/services.LoggerService.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Services */
 
 /**
  * Create factory for the DataService
@@ -297,3 +299,4 @@ synthMobile.factory('LoggerService',
 		}
     }
 ]);
+})(synthMobile);

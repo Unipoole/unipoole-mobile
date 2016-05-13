@@ -1,1 +1,0 @@
-"use strict";synthMobile.factory("WelcomeService",["$q","DataService","UserSession","LoggerService",function(e,o,t,r){function c(){}var n=r("WelcomeService");return c.prototype.getWelcome=function(){var r=e.defer();return o.getToolData(t.activeModule,"welcome").then(function(e){r.resolve(e)},function(){n.warn("Service failed to get welcome"),r.reject()}),r.promise},new c}]);

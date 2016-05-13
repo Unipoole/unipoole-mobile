@@ -1,8 +1,8 @@
+/* 
+ * base/js/settings/settings.controllers.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Services */
-
-
 /**
  * Factory for the Settings Service
  */
@@ -15,16 +15,8 @@ synthMobile.factory('SettingsService',
 		 */
 		function SettingsService(){
 		}
-	
-		
-		SettingsService.prototype.doX = function(){
-			var deferred = $q.defer();
-			
-			deferred.resolve();
-			
-			return deferred.promise;
-		};
-	
+
 		return new SettingsService();
 	}
 ]);
+})(synthMobile);

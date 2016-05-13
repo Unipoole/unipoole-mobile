@@ -1,6 +1,8 @@
+/* 
+ * base/js/services/services.SyncAPIService.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Services */
 
 /**
  * Define the factory for the SyncAPI Service
@@ -846,8 +848,6 @@ synthMobile.factory('SyncAPIService',
 			.then(getUpdateTokenPromise);
 	};
 	
-	
-	
-	
 	return new SyncAPIService();
   }]);
+})(synthMobile);

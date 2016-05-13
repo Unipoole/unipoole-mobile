@@ -1,1 +1,0 @@
-"use strict";synthMobile.config(["$routeProvider",function(e){e.when("/tool/welcome",{templateUrl:"tools/welcome/partials/welcome.html",controller:"WelcomeCtrl"})}]),SynthAttachmentMiner.addHandler("welcome","default"),SynthEmbeddedImageHandler.addHandler("welcome",function(e,t){return e.content=SynthEmbeddedImageHandler.fixForHtmlElement(e.content,t),e});

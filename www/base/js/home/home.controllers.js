@@ -1,7 +1,8 @@
+/* 
+ * base/js/home/home.controllers.js
+ */
+(function(synthMobile){
 'use strict';
-
-/* Controllers */
-
 /**
  * Controller for the home screen
  */
@@ -26,4 +27,5 @@ synthMobile.controller('HomeCtrl',
 			);
     }
 ]);
+})(synthMobile);
 

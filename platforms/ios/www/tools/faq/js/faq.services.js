@@ -1,1 +1,0 @@
-"use strict";synthMobile.factory("FaqService",["$q","DataService","UserSession","LoggerService",function(e,t,o,n){function r(){}n("FaqService");return r.prototype.getFaqs=function(){return t.getToolData(o.activeModule,"faq")},r.prototype.getFaq=function(e){return t.getToolData(o.activeModule,"faq").then(function(t){return t[e]})},new r}]);

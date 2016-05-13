@@ -1,8 +1,17 @@
+form.shedule-filter{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.schedule-event.panel{
+    border-radius: 0;
+}
 
 .schedule-event .panel-heading{
     padding-top: 3px;
     padding-bottom : 3px;
     padding-left: 5px;
+    border-radius: 0;
 }
 
 .schedule-event .panel-body{

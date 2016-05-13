@@ -126,7 +126,10 @@ angular.module('ng-iscroll', []).directive('ngIscroll', function (){
 					// This is the change handler
 					function(newValue, oldValue) {
 						if ( newValue !== oldValue ) {
-							scope.$parent.myScroll[scroll_key].refresh();
+							setTimeout(function () {
+								 scope.$parent.myScroll[scroll_key].refresh();
+							}, 100);
+							
 						}
 					}
 				);

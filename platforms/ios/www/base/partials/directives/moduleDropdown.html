@@ -2,8 +2,7 @@
 <span ng-if="!userSession.registered">{{applicationName}}</span>
 <div class="dropdown" id="moduleSelect" ng-if="userSession.registered && numberModules() > 1">
 	<a class="btn dropdown-toggle"  data-toggle="dropdown" href="javascript:;">
-		<span>{{userSession.activeModule}}</span>
-		<span class="caret"></span>
+		<span class="moduleName">{{userSession.activeModule}}</span>
 	</a>
 	<div class="dropdown-menu">
 		<ul class="list-group list-menu">

@@ -1,6 +1,9 @@
+/* 
+ * base/js/services/services.DataService.js
+ */
+(function(synthMobile, angular){
 'use strict';
 
-/* Services */
 
 /**
  * Create factory for the DataService
@@ -573,6 +576,14 @@ synthMobile.factory('DataService',
 	};
 	
 	/**
+	 * Make sure the files exists that prevent the device from scanning for library
+	 * content in the Application directory
+	 */
+	DataService.prototype.ensureNoMediaScanFiles = function(){
+		return this.writeToFile("", ".nomedia");
+	};
+	
+	/**
 	 * Merge data to a module's data file.
 	 * 
 	 * @param moduleId - ID of the module to merge too
@@ -910,3 +921,4 @@ synthMobile.factory('DataService',
 	
 	return new DataService();
 }]);
+})(synthMobile, angular);

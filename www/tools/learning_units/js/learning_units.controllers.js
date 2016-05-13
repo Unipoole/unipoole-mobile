@@ -56,6 +56,8 @@ synthMobile.controller('LearningUnitsListCtrl',
 		$scope.sectionId=$routeParams.sectionId
 		$scope.unitId=$routeParams.unitId;
 		
+		$("[ng-iscroll=mainScroll] .scroller").css("width", "auto");
+		
 		/**
 		 * Function to find the current, next, and previous
 		 * sections
@@ -122,6 +124,10 @@ synthMobile.controller('LearningUnitsListCtrl',
 			.then(function(section) {
 				fixAndDisplaySection(section);
 			},SynthErrorHandler);
+		
+		$scope.$on('$destroy', function() {
+			$("[ng-iscroll=mainScroll] .scroller").css("width", "");
+		});
 
 	}
 ]);

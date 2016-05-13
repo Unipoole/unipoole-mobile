@@ -1,0 +1,18 @@
+<span class="badge" ng-if="!resource.directory">{{resource.size | bytesToSize}}</span>
+
+<div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+	<span class="glyphicon glyphicon-folder-close" ng-if="resource.directory"> </span>
+	<span class="glyphicon glyphicon-file" ng-if="!resource.directory"> </span>
+	{{resource.name}}
+</div>
+<div ng-if="!resource.directory">
+	<button type="button" class="btn btn-danger btn-xs" ng-if="!resource.isDownloaded" ng-click="downloadResource(resource, $event)"><span class="glyphicon glyphicon-cloud-download"></span> Download</button>
+	<button type="button" class="btn btn-primary btn-xs" ng-if="resource.isDownloaded">Open</button>
+	<button type="button" class="btn btn-default btn-xs" ng-click="showInfo(resource, $event)"><span class="glyphicon glyphicon-info-sign"></span> Info</button>
+</div>
+<div style="margin-top: 7px" ng-if="resource.busyDownloading">
+	<div class="progress progress-striped active" style="margin-bottom: 0;">
+		<div class="progress-bar progress-bar-success" role="progressbar" style="width: {{resource.downloadProgress || 0}}%">
+		</div>
+	</div>
+</div>
