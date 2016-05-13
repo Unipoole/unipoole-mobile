@@ -1,0 +1,6 @@
+{
+	"autoSyncEnabled" : true,
+	"autoSyncInterval" : 60000,
+	"autoSyncDownload" : false,
+	"autoSyncUpload" : true
+}

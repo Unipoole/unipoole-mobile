@@ -1,0 +1,60 @@
+<div class="panel panel-form">
+	<div class="panel-body no-padding">
+		<!-- Table -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Process</th>
+					<th>Size</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Download rows -->
+				<tr ng-show="toolDownloads.length > 0">
+					<th colspan="4" style="text-align: left;">Download</th>
+				</tr>
+				<tr ng-repeat="tool in toolDownloads">
+					<td style="text-align: left;">{{tool.label}}</td>
+					<td>{{(tool.contentDownloadSize + tool.codeDownloadSize) | bytesToSize}}</td>
+					<td>
+					<div class="progress progress-striped" style="margin-bottom: 0">
+							<div class="progress-bar" role="progressbar"  style="width: {{tool.downloadProgress || 0}}%"></div>
+						</div>
+					</td>
+				</tr>
+				
+				<!-- Upload rows -->
+				<tr ng-show="toolUploads.length > 0">
+					<th colspan="4" style="text-align: left;">Upload</th>
+				</tr>
+				<tr ng-repeat="tool in toolUploads">
+					<td style="text-align: left;">{{tool.label}}</td>
+					<td>{{tool.contentUploadSize | bytesToSize}}</td>
+					<td>
+						<div class="progress progress-striped" style="margin-bottom: 0">
+							<div class="progress-bar" role="progressbar"  style="width: {{tool.uploadProgress || 0}}%"></div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-body" ng-show="syncBusy" >
+		<!--  Sync busy -->
+		<div class="alert alert-warning synth-busybox">
+			<span class="synth-icon-loader32"></span>
+			<span>Busy with synchronisation</span>
+		</div>
+	</div>
+	<div class="panel-body" ng-show="syncBusy==false && syncError==true" >
+		<!-- Error with sync -->
+		<div class="alert alert-danger">
+			<span>Failed to do synchronisation.</span>
+		</div>
+	</div>
+	<div class="panel-footer" ng-hide="syncBusy">
+	   <a href="#/home" class="btn btn-primary" ng-hide="syncError">Done</a>
+	   <a href="#/sync" class="btn btn-warning" ng-hide="!syncError">Retry</a>
+	</div>
+</div>

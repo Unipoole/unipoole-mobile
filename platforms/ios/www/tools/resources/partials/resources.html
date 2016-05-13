@@ -1,0 +1,100 @@
+<div ng-controller="ResourcesCtrl">
+	<ul class="list-group list-menu">
+		<li class="list-group-item" ng-click="goUp()">
+			<span class="glyphicon glyphicon-folder-open"> </span> <b>..</b>
+		</li>
+		<li class="list-group-item" ng-repeat="resource in resources" ng-click="openResource(resource, $event)">
+			<span class="badge" ng-if="!resource.directory">{{resource.size | bytesToSize}}</span>
+			
+			
+			<div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+				<span class="glyphicon glyphicon-folder-close" ng-if="resource.directory"> </span>
+				<span class="glyphicon glyphicon-file" ng-if="!resource.directory"> </span>
+				{{resource.name}}
+			</div>
+			<div ng-if="!resource.directory">
+				<button type="button" class="btn btn-danger btn-xs" ng-hide="resource.isDownloaded" ng-click="downloadResource(resource, $event)"><span class="glyphicon glyphicon-cloud-download"></span> Download</button>
+				<button type="button" class="btn btn-primary btn-xs" ng-hide="!resource.isDownloaded">Open</button>
+				<button type="button" class="btn btn-default btn-xs" ng-click="showInfo(resource, $event)"><span class="glyphicon glyphicon-info-sign"></span> Info</button>
+			</div>
+			<div style="margin-top: 7px" ng-show="resource.busyDownloading">
+				<div class="progress progress-striped active" style="margin-bottom: 0;">
+					<div class="progress-bar progress-bar-success" role="progressbar" style="width: {{resource.downloadProgress || 0}}%">
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	
+	<!-- Dialog for information -->
+	<div class="modal fade" id="infoModal" data-backdrop="false">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #eee;">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title">Information</h4>
+			</div>
+			<div class="modal-body">
+			<table cellspacing="0">
+				<tbody>
+					<tr>
+						<th>Title</th>
+						<td>{{resourceInfo.name}}</td>
+					</tr>
+					<tr>
+						<th>Description</th>
+						<td>{{resourceInfo.description}}</td>
+					</tr>
+					<tr>
+						<th>Access</th>
+						<td>{{resourceInfo.access}}</td>
+					</tr>
+					<tr>
+						<th>Created By</th>
+						<td>{{resourceInfo.createdByDisplayName}}</td>
+					</tr>
+					<tr>
+						<th>Created Time</th>
+						<td>{{resourceInfo.created_on | formatDate}}</td>
+					</tr>
+					<tr>
+						<th>Last Modified Time</th>
+						<td>{{resourceInfo.modified_on | formatDate}}</td>
+					</tr>
+					<tr>
+						<th>Last Modified By</th>
+						<td>{{resourceInfo.lastmodifiedByDisplayName}}</td>
+					</tr>
+					<tr>
+						<th>Size</th>
+						<td>{{resourceInfo.size | bytesToSize}}</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	<!-- Dialog for information -->
+	<div class="modal fade" id="downloadModal" data-backdrop="false">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #eee;">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title">Download resource</h4>
+			</div>
+			<div class="modal-body">
+				<div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+
+
+		
+</div>
+
+

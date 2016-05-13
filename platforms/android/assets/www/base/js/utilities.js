@@ -1,0 +1,1 @@
+!function(t){function n(){}n.prototype.getNumberOfProperties=function(t,n){if(void 0===t)return 0;var e=t;return n&&(e=t[n]),Object.keys(e).length},t.synth=t.synth||{},t.synth.utilities=new n}(window);

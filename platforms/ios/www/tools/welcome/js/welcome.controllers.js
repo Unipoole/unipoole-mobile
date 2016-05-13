@@ -1,0 +1,1 @@
+"use strict";synthMobile.controller("WelcomeCtrl",["$scope","$q","WelcomeService","UserSession",function(e,o,c){c.getWelcome().then(function(o){e.welcome=o},function(){console.log("Failed to get welcome")})}]);

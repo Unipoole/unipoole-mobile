@@ -1,0 +1,41 @@
+<div class="panel panel-form">
+	<div class="panel-body">
+		<!-- Headers -->
+		<div class="row hidden-xs">
+			<div class="col-sm-6"><b>Tool</b></div>
+			<div class="col-sm-3"><b>Upload <br>My Changes</b></div>
+			<div class="col-sm-3"><b>Download <br>New Content</b></div>
+		</div>
+		<hr class="hidden-xs">
+		<!-- Repeat for every tool -->
+		<div class="row" ng-repeat="(key, tool) in tools">
+			<div class="col-xs-12 col-sm-6"><strong>{{tool.label}}</strong></div>
+	        <div class="col-xs-6 col-sm-3">
+	           <span class="glyphicon glyphicon-cloud-upload visible-xs pull-left">&nbsp;</span>
+	           <input type="checkbox" ng-model="tool.uploadSelected" ng-change="updateTotals();" ng-disabled="tool.upload == 0"> {{tool.contentUploadSize | bytesToSize}}
+	        </div>
+	        <div class="col-xs-6 col-sm-3">
+	           <span class="glyphicon glyphicon-cloud-download visible-xs pull-left">&nbsp;</span>
+	           <input type="checkbox" ng-model="tool.downloadSelected" ng-change="updateTotals();" ng-disabled="tool.download == 0"> {{(tool.contentDownloadSize + tool.codeDownloadSize) | bytesToSize}}
+	        </div>
+		</div>
+    </div>
+    <div class="panel-footer">
+       <div class="row">
+           <div class="col-xs-5"><strong>Upload</strong></div>
+           <div class="col-xs-5">{{syncUpload | bytesToSize}}</div>
+        </div>
+        <div class="row">
+           <div class="col-xs-5"><strong>Download</strong></div>
+           <div class="col-xs-5">{{syncDownload | bytesToSize}}</div>
+        </div>
+        <div class="row">
+           <div class="col-xs-5"><strong>Total</strong></div>
+           <div class="col-xs-5">{{syncTotal | bytesToSize}}</div>
+        </div>
+     </div>
+	<div class="panel-footer">
+		<button type="button" class="btn btn-primary" ng-click="doSync()">Okay</button>
+		<button type="button" class="btn btn-default" onclick="window.location='#/home'">Cancel</button>
+	</div>
+</div>

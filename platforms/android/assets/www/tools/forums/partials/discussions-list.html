@@ -1,0 +1,5 @@
+<div ng-controller="DiscussionListCtrl">
+	<div class="list-group list-menu">
+		<a href="#/tool/forums/{{forum.id}}/{{discussion.id}}" class="list-group-item" ng-repeat="discussion in forum.discussions">{{discussion.topic}} <span class="badge pull-right">{{props(discussion, 'messages')+1}}</span></a>
+	</div>
+</div>

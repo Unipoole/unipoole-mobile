@@ -1,0 +1,39 @@
+<div class="list-group list-menu">
+	
+	<!--  Sync settings -->
+	<div class="list-group-item list-group-divider" ng-hide="!userSession.registered">Synchronise</div>
+	<a href="javascript:;" class="list-group-item" ng-hide="!userSession.registered">
+		<div class="pull-right"><input bs-switch ng-model="autoSyncDownload" type="checkbox" switch-animate="animateSwitch"/></div>
+		<h4 class="list-group-item-heading">Auto Download</h4>
+		<p class="list-group-item-text">Automatically download new content</p>
+	</a>
+	<a href="javascript:;" class="list-group-item" ng-hide="!userSession.registered">
+		<div class="pull-right"><input bs-switch ng-model="autoSyncUpload" type="checkbox" switch-animate="animateSwitch"/></div>
+		<h4 class="list-group-item-heading">Auto Upload</h4>
+		<p class="list-group-item-text">Automatically upload your changes</p>
+	</a>
+	
+	<!-- Module Management settings -->
+	<div class="list-group-item list-group-divider">Modules</div>
+	<div class="list-group-item" ng-if="numModules>1" data-toggle="collapse" data-target="#defaultModules">
+		<h4 class="list-group-item-heading">Default Module</h4>
+		<p class="list-group-item-text">Select default module when app launches</p>
+		<div id="defaultModules" class="collapse">
+			<ul class="list-group" style="margin-top: 10px; margin-bottom: 10px">
+				<li class="list-group-item" ng-repeat="module in modules" ng-click="selectDefaultModule(module.id, $event)">
+				<span ng-if="module.id == defaultModule" class="glyphicon glyphicon-ok pull-right"></span>
+				{{module.name}}</li>
+			</ul>
+		</div>
+	</div>
+	<a href="#/register-selectModules" class="list-group-item">
+		<h4 class="list-group-item-heading">Register Modules</h4>
+		<p class="list-group-item-text">Register for more modules</p>
+	</a>
+	
+	<div class="list-group-item list-group-divider">Developer tools</div>
+	<a href="javascript:;" class="list-group-item" ng-click="deleteApplicationData()">
+		<h4 class="list-group-item-heading">Delete account</h4>
+		<p class="list-group-item-text">Delete all account data</p>
+	</a>
+</div>

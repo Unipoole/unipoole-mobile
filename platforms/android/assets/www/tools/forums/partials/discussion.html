@@ -1,0 +1,28 @@
+<div ng-controller="DiscussionCtrl" class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{discussion.topic}}</div>
+		<div class="panel-body">
+			<div ng-bind-html="discussion.content | noEscape"></div>
+		</div>
+		<div class="panel-footer">
+				<button type="button" class="btn btn-default btn-sm" ng-click="reply();"><span class="glyphicon glyphicon-pencil"></span> Reply</button>
+		</div>
+	</div>
+	
+	<div>
+		<div class="panel panel-primary" ng-repeat="message in discussion.messages | object2Array | orderBy:'create_date'">
+			<div class="panel-heading">
+				<div><b>{{message.topic}}</b></div>
+				<div style="display: inline-block; text-align: left;">by {{message.creator_name}}</div> 
+				<div style="display: inline-block; text-align: right;"><i>{{message.create_date | formatDate:'YYYY MMM DD @ HH:mm'}}</i></div>
+			</div>
+			<div class="panel-body embedded-images">
+				<div ng-bind-html="message.content | noEscape"></div>
+			</div>
+			<div class="panel-footer">
+				<button type="button" class="btn btn-default btn-sm" ng-click="reply(message.id);"><span class="glyphicon glyphicon-pencil"></span> Reply</button>
+				<synth-attachments attachments="message.attachments" pull="right"></synth-attachments>
+			</div>
+		</div>
+	</div>
+</div>

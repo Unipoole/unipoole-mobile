@@ -1,0 +1,15 @@
+<div ng-controller="LearningUnitsViewUnitCtrl">
+	<div ng-bind-html="unit.description | noEscape" class="well" style="border-radius: 0; margin-bottom: 0;" ng-if="unit.description!= null && unit.description.trim() != ''"></div>
+
+
+<div class="panel panel-primary" style="border-radius: 0; border: 0; margin-bottom: 0;">
+  <div class="panel-heading" style="border-radius: 0;">Sections</div>
+  <div class="panel-body" style="padding: 0">
+    <div class="list-group list-menu" style="margin-bottom: 0;">
+		<a href="#/tool/learning_units/{{unitId}}/{{section.id}}" class="list-group-item" ng-repeat="section in sections">{{section.title}} <span class="badge pull-right"></span></a>
+	</div>
+  </div>
+</div>
+	
+</div>
+

@@ -1,0 +1,125 @@
+<div ng-controller="ScheduleCtrl">
+	<form class="form-horizontal shedule-filter" role="form" novalidate>
+	
+		<!-- Dropdown to select filter option -->
+		<div class="form-group">
+			<label for="filterOption" class="col-sm-2 control-label">Filter type</label>
+			<div class="col-sm-4">
+				<select id="filterOption" class="form-control" ng-model="filterOption" ng-change="changedFilterOption()">
+					<option value="all">All</option>
+					<option value="today">Events for today</option>
+					<option value="week">Events for this week</option>
+					<option value="month">Events for this month</option>
+					<option value="year">Events for this year</option>
+					<option value="startEnd">Start/end date</option>
+					<option value="specific">Specific date</option>
+				</select>
+			</div>
+		</div>
+		<!-- Input for specific date filter -->
+		<div class="form-group" ng-show="filterOption == 'startEnd'">
+			<label class="col-sm-2 control-label">Start</label>
+			<div class="col-sm-4">
+				<p class="input-group">
+					<input type="text" 
+					    class="form-control"
+						datepicker-popup="yyyy-MM-dd" 
+						show-weeks="false"
+						show-button-bar="true" 
+						ng-model="startCalendar"
+						is-open="startCalendarOpen" 
+						min="minDate"
+						ng-required="true"
+						ng-change="changedFilterOption()" 
+						close-text="Close" /> 
+						<span class="input-group-btn">
+							<button class="btn btn-default" ng-click="open($event, 'start')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+					    </span>
+				</p>
+			</div>
+	
+			<label class="col-sm-2 control-label">End</label>
+			<div class="col-sm-4">
+				<p class="input-group">
+					<input type="text" class="form-control"
+						datepicker-popup="yyyy-MM-dd" 
+						show-weeks="false"
+						show-button-bar="true" 
+						ng-model="endCalendar"
+						is-open="endCalendarOpen" 
+						min="startCalendar"
+						ng-change="changedFilterOption()" 
+						close-text="Close" /> <span
+						class="input-group-btn">
+						<button class="btn btn-default" ng-click="open($event, 'end')">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+		</div>
+	
+	
+		<!-- Input for specific date filter -->
+		<div ng-show="filterOption == 'specific'">
+			<div>
+				<h3>Date (year, month, day)</h3>
+			</div>
+			<div class="form-group">
+	
+				<!-- Start year -->
+				<!-- label class="col-xs-1 col-sm-1 control-label">Year</label -->
+				<div class="col-xs-4 col-sm-2">
+					<input type="number" class="form-control" ng-model="specificYear"
+						ng-change="changedFilterOption()" ng-required="true" />
+				</div>
+	
+				<!-- Start month -->
+				<!-- label class="col-xs-1 col-sm-1 control-label">Month</label -->
+				<div class="col-xs-4 col-sm-2">
+					<select id="filterOption" class="form-control"
+						ng-model="specificMonth" ng-change="changedFilterOption()"
+						ng-disabled="specificMonthDisabled">
+						<option value="1">January</option>
+						<option value="2">February</option>
+						<option value="3">March</option>
+						<option value="4">April</option>
+						<option value="5">May</option>
+						<option value="6">June</option>
+						<option value="7">July</option>
+						<option value="8">August</option>
+						<option value="9">September</option>
+						<option value="10">October</option>
+						<option value="11">November</option>
+						<option value="12">December</option>
+					</select>
+				</div>
+	
+				<!-- Start Day -->
+				<!-- label class="col-xs-1 col-sm-1 control-label">Day</label -->
+				<div class="col-xs-4 col-sm-2">
+					<select id="days" class="form-control" ng-model="specificDay"
+						ng-change="changedFilterOption()" ng-disabled="specificDayDisabled">
+						<option value="{{day}}" ng-repeat="day in days">{{day}}</option>
+					</select>
+				</div>
+			</div>
+	</form>
+	</div>
+	<hr>
+	<div class="alert alert-warning synth-busybox" ng-show="loadingSchedule" style="margin-top: -20px">
+			<span class="synth-icon-loader32"></span>
+			<span>Loading schedule...</span>
+	</div>
+	<div class="alert alert-warning synth-busybox" ng-show="!loadingSchedule && schedule.length === 0" style="margin-top: -20px">
+			<span>There are no events for your criteria</span>
+	</div>
+	<div class="panel panel-primary schedule-event" ng-repeat="event in schedule | orderBy:orderDateFunc" ng-hide="loadingSchedule">
+         <div class="panel-heading">{{event.start | formatDate:'YYYY MMM DD @ HH:mm'}}</div>
+         <div class="panel-body">{{event.title}}</div>
+         <div class="panel-body" ng-bind-html="event.description | noEscape"></div>
+     </div>
+	
+</div>

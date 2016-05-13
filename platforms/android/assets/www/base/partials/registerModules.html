@@ -1,0 +1,28 @@
+<div class="panel panel-form">
+	<div class="panel-body no-padding">
+		<div class="row">
+			<div class="col-xs-8">
+				<b>Module</b>
+			</div>
+			<div class="col-xs-4">
+				<b>Status</b>
+			</div>
+		</div>
+		<div class="row" ng-repeat="module in modules"
+			style="border-top: 1px solid #cccccc; padding-top: 5px; padding-bottom: 5px;">
+			<div class="col-xs-8">{{module.id}}</div>
+			<div class="col-xs-4">
+				<div class="progress progress-striped" style="margin-bottom: 0">
+					<div class="progress-bar" role="progressbar" style="width: {{module.progress"></div>
+				</div>
+			</div>
+		</div>
+		<div class="alert alert-info" ng-show="busy" style="margin-bottom: 0">
+		Please wait... You will be redirected to the menu once 
+		all modules have been registered
+		</div>
+	</div>
+	<div class="panel-footer" style="text-align: right;" ng-show="error">
+		<button class="btn btn-default" ng-click="goBack()">Back</button>
+	</div>
+</div>

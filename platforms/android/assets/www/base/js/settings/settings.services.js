@@ -1,0 +1,1 @@
+"use strict";synthMobile.factory("SettingsService",["$q","$filter","DataService","LoggerService","UserSession",function(e,r,t,i){function n(){}i("SettingsService");return n.prototype.doX=function(){var r=e.defer();return r.resolve(),r.promise},new n}]);

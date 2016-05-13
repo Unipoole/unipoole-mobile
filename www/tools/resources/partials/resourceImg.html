@@ -1,0 +1,16 @@
+<div ng-hide="initialising" class="ng-hide">
+<img ng-if="resource.isDownloaded" src="{{src}}" width="{{width || 'auto'}}" height="{{height || 'auto'}}" />
+<button ng-if="!resource.isDownloaded" class="btn btn-danger" ng-click="download()">
+	<span>Download Image</span>
+	<div ng-show="!resource.busyDownloading">
+		<i><b>{{resource.size | bytesToSize}}</b></i>
+	</div>
+	<div ng-show="resource.busyDownloading">
+		<div class="progress progress-striped active" style="margin-bottom: 0; height: 10px">
+			<div class="progress-bar progress-bar-success" role="progressbar" style="width: {{resource.downloadProgress || 0}}%">
+			</div>
+		</div>
+	</div>
+		
+</button>
+</div>

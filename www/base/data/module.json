@@ -1,0 +1,133 @@
+{
+    "toolDescriptions": {
+        "announcements": {
+            "defaultPage": "#tool/announcements",
+            "name": "announcements",
+            "label": "Announcements",
+            "heading": "Announcements",
+            "icon": "icon-sakai-announcements",
+            "description": "",
+            "menu": true,
+            "seq": 30
+        },
+        "faq": {
+            "defaultPage": "#tool/faq",
+            "name": "faq",
+            "label": "FAQs",
+            "heading": "FAQs",
+            "icon": "icon-sakai-help",
+            "description": "",
+            "menu": true,
+            "seq": 40
+        },
+        "forums": {
+            "defaultPage": "#tool/forums",
+            "name": "forums",
+            "label": "Discussions",
+            "heading": "Discussions",
+            "icon": "icon-sakai-forums",
+            "description": "",
+            "menu": true,
+            "seq": 60
+        },
+        "welcome": {
+            "defaultPage": "#tool/welcome",
+            "name": "welcome",
+            "label": "Welcome",
+            "heading": "Welcome",
+            "icon": "icon-sakai-motd",
+            "description": "",
+            "menu": true,
+            "seq": 20
+        },
+        "schedule": {
+            "defaultPage": "#tool/schedule",
+            "name": "schedule",
+            "label": "Schedule",
+            "heading": "Schedule",
+            "icon": "icon-sakai-schedule",
+            "description": "",
+            "menu": true,
+            "seq": 80
+        },
+        "learning_units": {
+            "defaultPage": "#tool/learning_units",
+            "name": "learning_units",
+            "label": "Learning Units",
+            "heading": "Learning Units",
+            "icon": "icon-sakai-melete",
+            "description": "",
+            "menu": true,
+            "seq": 50
+        },
+        "resources": {
+            "defaultPage": "#tool/resources",
+            "name": "resources",
+            "label": "Additional Resources",
+            "heading": "Additional Resources",
+            "icon": "icon-sakai-resources",
+            "description": "For posting current, time-critical information",
+            "menu": true,
+            "seq": 90
+        },
+        "base": {
+            "defaultPage": "start.html",
+            "label": "Unipoole Client Base",
+            "heading": "Unipoole Client Base",
+            "icon": "",
+            "description": "The base code for the Unipoole Client that loads all the tools and hadles synchronization",
+            "menu": false,
+            "seq": 10
+        }
+    },
+    "toolsLocal": {
+    	"base": {
+             "clientCodeVersion": "1.0.0",
+             "clientContentVersion": "0",
+             "localChange": false,
+             "localChangeSize": 0
+         },
+        "welcome": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "schedule": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "announcements": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "forums": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "faq": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "learning_units": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        },
+        "resources": {
+            "clientCodeVersion": "1.0.0",
+            "clientContentVersion": "0",
+            "localChange": false,
+            "localChangeSize": 0
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="panel panel-primary" ng-controller="FaqDetailCtrl">
+	<div class="panel-heading">Frequently Asked Question</div>
+		<table class="table">
+			<tr>
+				<th>Category</th>
+				<td>{{faq.category}}</td>
+			</tr>
+			<tr>
+				<th>Modified</th>
+				<td>{{faq.modifiedOn | formatDate:'YYYY MMM DD @ HH:mm'}}</td>
+			</tr>
+			<tr>
+				<th>Question</th>
+				<td>{{faq.question}}</td>
+			</tr>
+			<tr>
+				<th>Answer</th>
+				<td ng-bind-html="faq.answer | noEscape"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

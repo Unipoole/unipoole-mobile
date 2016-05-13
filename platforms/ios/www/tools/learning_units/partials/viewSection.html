@@ -1,0 +1,7 @@
+<div ng-controller="LearningUnitsViewSectionCtrl">
+	<div id="sectionContent"></div>
+	<ul class="pager">
+		<li class="previous" ng-if="previousSection!=null" ><a href="#/tool/learning_units/{{unitId}}/{{previousSection.id}}">&larr; Previous</a></li>
+		<li class="next" ng-if="nextSection!=null"><a href="#/tool/learning_units/{{unitId}}/{{nextSection.id}}">Next &rarr;</a></li>
+	</ul>
+</div>

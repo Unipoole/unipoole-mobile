@@ -1,0 +1,14 @@
+<form class="form-signin" role="form" style="max-width: 400px; margin: auto" ng-submit="submit()">
+  
+	<h2 class="form-signin-heading">Please sign in</h2>
+	
+	  
+    <div class="panel panel-danger" ng-show="authFailed">
+      <div class="panel-heading">Authentication failed!</div>
+    </div>
+	   
+	
+	<input type="text" class="form-control" placeholder="Student Number" ng-model="login.username" required autofocus> 
+	<input type="password" class="form-control" placeholder="Password" ng-model="login.password" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>

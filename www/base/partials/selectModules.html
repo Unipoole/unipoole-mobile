@@ -1,0 +1,29 @@
+<div class="panel panel-form">
+	<div class="panel-body no-padding">
+		<div class="alert alert-warning synth-busybox" ng-show="loadingModules" style="margin-bottom: 0">
+			<span class="synth-icon-loader32"></span>
+			<span>Getting modules...</span>
+		</div>
+		<div class="panel panel-danger" ng-show="error" style="margin-bottom: 0;">
+			<div class="panel-heading">{{errorMessage}}</div>
+		</div>
+		
+		<ul class="list-group list-menu" style="margin-bottom: 0;" ng-if="modules.length > 0">
+			<li class="list-group-item" ng-repeat="module in modules" ng-click="toggleModule(module)">
+			    {{module.name}} 
+			    <span class="glyphicon glyphicon-remove pull-right" ng-hide="module.selected||module.registered"></span>
+			    <span class="glyphicon glyphicon-ok pull-right" ng-hide="!module.selected"></span>
+			    <span class="glyphicon glyphicon-book pull-right" ng-hide="!module.registered"></span>
+			    
+			</li>
+		</ul>
+		
+	</div>
+	<div class="panel-footer" ng-hide="loadingModules" style="text-align: right;">
+		<button class="btn" ng-class="error?'btn-primary':'btn-default'" ng-click="goBack()">Back</button>
+		<button ng-disabled="error||!hasSelectedModules()" class="btn btn-primary" ng-click="submit()">Next</button>
+	</div>
+</div>
+
+
+

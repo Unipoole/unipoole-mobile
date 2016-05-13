@@ -1,0 +1,36 @@
+<div class="panel panel-form">
+	<div class="panel-body">
+		<div ng-show="haveSyncStatus && syncSummary.total > 0">
+			<div class="row" ng-show="haveSyncStatus">
+				<div class="col-xs-4"><strong>Upload</strong></div>
+				<div class="col-xs-4">{{syncSummary.upload | bytesToSize : true}}</div>
+			</div>
+			<div class="row" ng-show="haveSyncStatus">
+				<div class="col-xs-4"><strong>Download</strong></div>
+				<div class="col-xs-4">{{syncSummary.download | bytesToSize : true}}</div>
+			</div>
+			<div class="row" ng-show="haveSyncStatus">
+				<div class="col-xs-4"><strong>Total</strong></div>
+				<div class="col-xs-4">{{syncSummary.total | bytesToSize : true}}</div>
+			</div>
+		</div>
+		
+		<div class="alert alert-info" ng-show="haveSyncStatus && syncSummary.total > 0" style="margin-bottom: 0; margin-top: 15px">
+			Click OK to continue or Configure to change sync selection
+		</div>
+		
+		<div class="alert alert-success" ng-show="haveSyncStatus && syncSummary.total == 0" style="margin-bottom: 0">
+			<strong><span class="glyphicon glyphicon-ok">&nbsp;</span>You are currently in sync</strong>
+		</div>
+		
+		<div class="alert alert-warning synth-busybox" ng-hide="haveSyncStatus" style="margin-bottom: 0">
+				<span class="synth-icon-loader32"></span>
+				<span>Checking sync status...</span>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<button ng-show="haveSyncStatus && syncSummary.total > 0" type="button" class="btn btn-primary" ng-click="doSync();">Okay</button>
+		<button ng-show="haveSyncStatus && syncSummary.total > 0" type="button" class="btn btn-default" onclick="window.location='#/sync-configure'">Configure</button>
+		<a class="btn btn-default" href="#/home">Cancel</a>
+	</div>
+</div>

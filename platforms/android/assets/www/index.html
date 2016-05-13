@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html ng-app="SynthMobile">
+<head>
+	<title>Loading SynthMobile</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	
+	<script src="cordova.js"></script>
+	<link type="text/css" rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="libs/bootstrap-switch/css/bootstrap-switch.css">
+	<link type="text/css" rel="stylesheet" href="base/css/synthesis.css">
+	
+	
+	<link rel="stylesheet" href="base/css/ie10.responsive-fix.css">
+	<script type="text/javascript" src="libs/ie10.responsive-fix.js"></script>
+	<script type="text/javascript" src="libs/ie8.responsive-fix.js"></script>
+	
+	<!-- Library dependencies -->
+    <script type="text/javascript" src="libs/iScroll/iscroll.js"></script>
+	<script type="text/javascript" src="libs/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="libs/moment.min.js"></script>
+	<script type="text/javascript" src="libs/angular/angular.js"></script>
+	<script type="text/javascript" src="libs/angular/angular-route.js"></script>
+	<script type="text/javascript" src="libs/angular/angular-utf8-base64.js"></script>
+	<script type="text/javascript" src="libs/angular/angular-animate.js"></script>
+	<script type="text/javascript" src="libs/angular/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="libs/angular/ng-iscroll.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="libs/bootstrap-switch/js/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="libs/bootstrap-switch/js/angular-bootstrap-switch.js"></script>
+	<script type="text/javascript" src="libs/spin/spin.js"></script>
+	
+	<!-- Internal Library dependencies -->
+	<script type="text/javascript" src="base/js/utilities.js"></script>
+	
+	<!-- Base app -->
+	<script type="text/javascript" src="base/js/app.js"></script>
+	<script type="text/javascript" src="base/js/app.config.js"></script>
+	
+	<!-- Base controllers -->
+	<script type="text/javascript" src="base/js/boot/boot.controllers.js"></script>
+	<script type="text/javascript" src="base/js/register/register.controllers.js"></script>
+	<script type="text/javascript" src="base/js/home/home.controllers.js"></script>
+    <script type="text/javascript" src="base/js/sync/sync.controllers.js"></script>
+    <script type="text/javascript" src="base/js/settings/settings.controllers.js"></script>
+	
+	<!-- Base Services -->
+    <script type="text/javascript" src="base/js/register/register.services.js"></script>
+	<script type="text/javascript" src="base/js/home/home.services.js"></script>
+	<script type="text/javascript" src="base/js/sync/sync.services.js"></script>
+	<script type="text/javascript" src="base/js/settings/settings.services.js"></script>
+	
+	<script type="text/javascript" src="base/js/services/services.LoggerService.js"></script>
+	<script type="text/javascript" src="base/js/services/services.UserService.js"></script>
+	<script type="text/javascript" src="base/js/services/services.DataService.js"></script>
+	<script type="text/javascript" src="base/js/services/services.SyncAPIService.js"></script>
+	
+	<!-- Base Directives -->
+	<script type="text/javascript" src="base/js/directives.js"></script>
+	
+	<!-- 
+	   Add all the tools here
+	 -->
+	<script type="text/javascript" src="tools/announcements/js/announcements.routes.js"></script>
+	<script type="text/javascript" src="tools/announcements/js/announcements.services.js"></script>
+	<script type="text/javascript" src="tools/announcements/js/announcements.controllers.js"></script>
+	
+	<script type="text/javascript" src="tools/faq/js/faq.routes.js"></script>
+    <script type="text/javascript" src="tools/faq/js/faq.services.js"></script>
+    <script type="text/javascript" src="tools/faq/js/faq.controllers.js"></script>
+    
+    <script type="text/javascript" src="tools/welcome/js/welcome.routes.js"></script>
+    <script type="text/javascript" src="tools/welcome/js/welcome.services.js"></script>
+    <script type="text/javascript" src="tools/welcome/js/welcome.controllers.js"></script>
+    
+    <script type="text/javascript" src="tools/forums/js/forums.routes.js"></script>
+    <script type="text/javascript" src="tools/forums/js/forums.services.js"></script>
+    <script type="text/javascript" src="tools/forums/js/forums.controllers.js"></script>
+    
+    <script type="text/javascript" src="tools/schedule/js/schedule.routes.js"></script>
+    <script type="text/javascript" src="tools/schedule/js/schedule.services.js"></script>
+    <script type="text/javascript" src="tools/schedule/js/schedule.controllers.js"></script>
+    <link type="text/css" rel="stylesheet" href="tools/schedule/css/schedule.css">
+    
+    <script type="text/javascript" src="tools/learning_units/js/learning_units.routes.js"></script>
+    <script type="text/javascript" src="tools/learning_units/js/learning_units.services.js"></script>
+    <script type="text/javascript" src="tools/learning_units/js/learning_units.controllers.js"></script>
+    
+    <script type="text/javascript" src="tools/resources/js/resources.routes.js"></script>
+    <script type="text/javascript" src="tools/resources/js/resources.services.js"></script>
+    <script type="text/javascript" src="tools/resources/js/resources.controllers.js"></script>
+    
+</head>
+<body ng-controller="AppController">
+	<synth-menu></synth-menu>
+	<ol class="breadcrumb">
+	  <li ng-if="activePage != 'home'"><a href="#home"><span class="glyphicon glyphicon-home"></span></a></li>
+	  <li ng-repeat="breadcrumb in breadcrumbs" ng-class="$last&&'active'">
+		  <a ng-if="breadcrumb.url != null" href="{{breadcrumb.url}}">{{breadcrumb.name}}</a>
+		  <span ng-if="breadcrumb.url == null">{{breadcrumb.name}}</span>
+	  </li>
+	</ol>
+    <!--ng-iscroll='wrapper' ng-iscroll-refresh="1000" -->
+    <div class="wrapper" ng-iscroll="mainScroll">
+       <div class="scroller">
+			<div ng-view class="view-frame"></div>
+       </div>
+    </div>
+	<!-- Modal for authenticate -->
+	<div class="modal fade" id="synthAuthenticationModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" ng-click="authenticationCancelled()" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="synthAuthenticationModalLabel">
+						<span>{{authenticationModel.titleText}}</span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-signin" role="form" style="max-width: 400px; margin: auto" ng-submit="authenticationOk()">
+						<input type="text" class="form-control" disabled="disabled" ng-model="authenticationModel.username" required> 
+						<input type="password" class="form-control" placeholder="Password" ng-model="authenticationModel.password" required autofocus>
+						<div class="alert alert-danger" ng-show="authenticationModel.authFailed">
+                            <b>{{authenticationModel.message}}</b><br>
+                            <span>{{authenticationModel.instruction}}</span>
+                        </div>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">{{authenticationModel.submitText}}</button>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<!-- Modal for error message-->
+	<div class="modal fade" id="synthErrorModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="synthErrorModalLabel">
+						<span>Error {{synthError.id}}</span>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<span ng-bind-html="synthError.errorMessage | noEscape"></span><br>
+					<span ng-bind-html="synthError.errorDescription | noEscape"></span><br>
+					<span ng-bind-html="synthError.errorInstruction | noEscape"></span>
+					<div ng-show="synthError.additional">
+						<b>Additional:</b> {{synthError.additional}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bootscreen" ng-if="(undefined === applicationBoot) || applicationBoot">
+		<div class="textWrapper">
+			<span>Loading...</span>
+		</div>
+		<div class="cloudWrapper">
+			<boot-spinner></boot-spinner>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<div class="list-group list-menu">
+	
+	<a href="{{tool.defaultPage}}" class="list-group-item" ng-repeat="tool in tools">
+		<span class="glyphicon glyphicon-cloud toolSyncStatus" ng-class="appSyncStatus.tools[tool.key].inSync?'inSync':'outSync'"></span>
+		{{tool.label}}
+		<span class="glyphicon glyphicon-chevron-right pull-right"></span>
+	</a>
+</div>

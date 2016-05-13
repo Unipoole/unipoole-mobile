@@ -1,0 +1,8 @@
+<div class="dropdown" ng-if="attachments.length > 0" ng-class="buttonPull">
+	<button id="dLabel" role="button" data-toggle="dropdown" data-target="#" class="btn btn-default btn-sm">
+		<span class="glyphicon glyphicon-paperclip"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="attachment in attachments"><a ng-click="openAttachment(attachment)">{{attachment.name}}</a></li>
+	</ul>
+</div>

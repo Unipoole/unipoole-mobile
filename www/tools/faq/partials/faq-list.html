@@ -1,0 +1,20 @@
+<div ng-controller="FaqListCtrl">
+<div class="panel-group" id="accordion">
+  <div class="panel panel-primary" ng-repeat="faq in faqs | orderBy:'description'">
+    <div class="panel-heading" data-toggle="collapse" data-target="#faq{{faq.id}}">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#faq{{faq.id}}" href="javascript:;">
+          {{faq.description}}
+        </a>
+      </h4>
+    </div>
+    <div id="faq{{faq.id}}" class="panel-collapse collapse" >
+      <div class="panel-body" style="padding: 0">
+        <div class="list-group list-menu" style="margin-bottom: 0">
+            <a class="list-group-item" href="#/tool/faq/{{child.id}}" ng-repeat="child in faq.children | orderBy:'question'">{{child.question}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
