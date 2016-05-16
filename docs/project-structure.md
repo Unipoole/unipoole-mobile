@@ -1,6 +1,7 @@
 # Project Structure
 This page will explain the structure of the unipoole-mobile project
-REMEMBER: The application is built using cordova, you need to follow the project guidelines which cordova dictates
+
+**REMEMBER:** The application is built using cordova, you need to follow the project guidelines which cordova dictates
 
 **Any content you place or edit within the platforms directory can, and sometimes will be replaced each time you make a build, make sure you only make code changes within the www directory in the root of the project**
  
