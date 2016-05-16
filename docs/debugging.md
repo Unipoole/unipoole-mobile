@@ -1,7 +1,7 @@
 # Debugging
 This page will explain how you can debug the application running on a mobile device.
 The loglevel for the application is set in app.config.js
-```json
+```javascript
 {
 /*
  * Logging level
@@ -29,6 +29,7 @@ The loglevel for the application is set in app.config.js
 
 ## iOS
 For this you will require a device with iOS 7 or later installed.
+
 1. Make sure the "Developer" features are enabled for safari (both on the Mac and on the iOS device)
 2. Open the unipoole mobile application on the iOS device while being connected to the Mac
 3. Open Safari on the Mac and find your device on the "Develop" tab.
@@ -36,6 +37,7 @@ For this you will require a device with iOS 7 or later installed.
 
 ## Android
 Debugging on Android is only possible if the device is running Android 4.4 or later. It is highly recommended that you have a Android 4.4 device when developing.
+
 1. Connect the device to your computer (make sure it displayes when you type "adb devices" on the command line)
 2. Install and open the Google Chrome browser on your computer
 3. Navigate to chrome://inspect/#devices
