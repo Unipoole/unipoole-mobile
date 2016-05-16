@@ -13,3 +13,4 @@ The unipoole mobile application is build using cross platform mobile frameworks.
 
 ## Documentation
 * [Environment Setup](./docs/environment-setup.md)
+* [Build and Deploy](./docs/build-deploy.md)
