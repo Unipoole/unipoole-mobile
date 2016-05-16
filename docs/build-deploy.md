@@ -4,18 +4,21 @@ You can open the source code in Eclipse, by opening it as a normal eclipse proje
 
 
 ## Android
-* Go to the root directory of your unipoole-mobile checkout
++ Go to the root directory of your unipoole-mobile checkout
+
   ```bash
   cordova build android
   ```
-*  This should complete without errors
++  This should complete without errors
 * Now make sure your android device is connected with debugging enabled on the device.
 * You can query connected devices by running the following command
+  
   ```bash
   adb devices
   ```
    You should see your device in the list. If it is not there, you either don't have debugging enabled on your device, or the USB driver for your device needs to be installed
 * To build and run the application on your device, run the following command
+  
   ```bash
   cordova run android
   ```
@@ -23,6 +26,7 @@ You can open the source code in Eclipse, by opening it as a normal eclipse proje
 
 ## iOS
 * Go to the root directory of your unipoole-mobile checkout
+  
   ```bash
   cordova build ios
   ```
